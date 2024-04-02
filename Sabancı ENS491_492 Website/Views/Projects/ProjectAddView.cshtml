@@ -1,0 +1,118 @@
+﻿@model Sabancı_ENS491_492_Website.Models.Project
+
+@{
+    ViewData["Title"] = "Manage Projects";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Success
+    </div>
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+<div class="card">
+    <form asp-action="AddProject" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label asp-for="Title" class="control-label">Title:</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description" class="control-label">Description:</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MajorDesign" class="control-label">Major Design:</label>
+            <input asp-for="MajorDesign" class="form-control" />
+            <span asp-validation-for="MajorDesign" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="RecommendedDisciplines" class="control-label">Recommended Disciplines:</label>
+            <input asp-for="RecommendedDisciplines" class="form-control" />
+            <span asp-validation-for="RecommendedDisciplines" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ProjectType" class="control-label">Project Type:</label>
+            <input asp-for="ProjectType" class="form-control" />
+            <span asp-validation-for="ProjectType" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Company" class="control-label">Company:</label>
+            <input asp-for="Company" class="form-control" />
+            <span asp-validation-for="Company" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Supervisors" class="control-label">Supervisors:</label>
+            <input asp-for="Supervisors" class="form-control" />
+            <span asp-validation-for="Supervisors" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="RecommendedNumberOfStudents" class="control-label">Recommended Number Of Students:</label>
+            <input asp-for="RecommendedNumberOfStudents" class="form-control" type="number" style="width: auto;" />
+            <span asp-validation-for="RecommendedNumberOfStudents" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="IsFull" class="control-label">Is Full:</label>
+            <select asp-for="IsFull" class="form-control">
+                <option value="false">No</option>
+                <option value="true">Yes</option>
+            </select>
+            <span asp-validation-for="IsFull" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Add Project" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+
+<!-- List of existing projects -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <!-- ... other headers ... -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in ViewBag.Projects as IEnumerable<Sabancı_ENS491_492_Website.Models.Project>)
+        {
+            <tr>
+                <td>@project.Title</td>
+                <td>@project.Description</td>
+                <!-- ... other project details ... -->
+                <td>
+                    <!-- Delete project link -->
+                    <a asp-action="DeleteProject" asp-route-id="@project.ProjectId" class="text-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form asp-controller="Projects" asp-action="ProjectsListView" method="get">
+    <button type="submit" class="btn btn-secondary">Back to Projects List</button>
+</form>
+

@@ -1,0 +1,111 @@
+﻿body {
+    
+}
+.sticky-top {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 20px;
+    z-index: 1020;
+}
+
+.card {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.card-title {
+    margin-bottom: 0.75rem;
+    font-weight:500;
+}
+
+.card-text {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.card-img-top {
+    width: 80%;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.project-card {
+    border: 1px solid #ddd;
+    max-width: 720px; 
+    width: 100%; 
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 30px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #e6edf4;
+}
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+.project-card-head {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+    .project-card-head a {
+        color: black;
+        text-decoration: none;
+        font-weight:700;
+        margin-left: 1rem;
+    }
+
+.project-card p {
+    margin:0;
+    font-size: 14px;
+    font-weight:500;
+    color: lightslategray;
+    margin-bottom: 1rem;
+}
+.project-card strong {
+    color: rgba(0,73,144,255);
+}
+.project-card h strong {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: orangered !important;
+    margin-bottom: 1rem;
+}
+
+.disciplines {
+    display: flex;
+    flex-direction: column;
+}
+    .disciplines a {
+        display: flex;
+        justify-content: center;
+    }
+    .disciplines p{
+        color: black;
+        margin-bottom: 0!important;
+    }
+    .disciplines label {
+        display: block; 
+        margin: 0.5em 0; 
+        cursor: pointer; 
+        font-size: 14px;
+    }
+
+    .input[type="checkbox"] {
+        /* Style for checkboxes */
+        margin-right: 5px; /* Space between checkbox and label text */
+    }
+
+

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Sabancı ENS491_492 Website.props" />
+</Project>

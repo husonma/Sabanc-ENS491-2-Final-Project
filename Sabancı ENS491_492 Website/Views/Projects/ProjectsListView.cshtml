@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Project>
+@{
+    var disciplines = new List<string>
+    {
+        "CS - Computer Science and Engineering",
+        "IE - Industrial Engineering",
+        "MAT - Materials Science and Nanoengineering",
+        "BIO - Molecular Biology, Genetics and Bioengineering",
+        "ME - Mechatronics Engineering",
+        "EE - Electronics Engineering"
+    };
+}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sticky sidebar -->
+        <div class="col-md-3">
+            <div class="sticky-top" style="top: 20px;">
+                <!-- Content of your sticky sidebar -->
+                <div class="card">
+                    <img class="card-img-top" src="https://suis.sabanciuniv.edu/photos/000028154125733787.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Hüseyin Onur Onma</h5>
+                        <p class="card-text">
+                            <strong>ID:</strong> 00028154<br>
+                            <strong>T.C.-Foreign ID:</strong> XXXXXXXXXXX <br>
+                            <strong>Program:</strong> CS<br>
+                            <strong>Supervisor:</strong> Kamer Kaya<br>
+                            <strong>Mail:</strong> onma@sabanciuniv.edu<br>
+                            <strong>Academic Transcript:</strong> Choose File<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="col-md-6">
+            <h2 class="text-light">Projects Offered</h2>
+            <div>
+                @if (Model != null)
+                {
+                    @foreach (var project in Model)
+                    {
+                        <div class="project-card">
+                            <div class="project-card-head">
+                                <a>#@project.ProjectId</a>
+                                <a>@project.Title</a>
+                            </div>
+                            <p><strong>Description: </strong>@project.Description</p>
+                            <p><strong>Recommended Disciplines: </strong> @project.RecommendedDisciplines</p>
+                            <p><strong>Project Type: </strong> @project.ProjectType</p>
+                            <p><strong>Company: </strong> @project.Company</p>
+                            <p><strong>Supervisors: </strong> @project.Supervisors</p>
+                            <p><strong>Recommended Number Of Students: </strong>@project.RecommendedNumberOfStudents</p>
+                            @if(project.IsFull){
+                                <h><strong>Project is full!</strong></h>
+                            }
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>No projects to display.</p>
+                }
+            </div>
+        </div>
+        <div class="col-md-3">
+             <div class="project-card">
+                <form asp-action="ProjectsListView" method="get">
+                    <div class="disciplines">
+                        <a>Filter Projects</a>
+                        <label>
+                            <input type="checkbox" name="hideFull" />
+                            Hide Full Projects
+                        </label>
+                        <p>Disciplines:</p>
+                        @foreach (var discipline in disciplines)
+                        {
+                            <label>
+                                <input type="checkbox" name="disciplines" value="@discipline" />
+                                @discipline
+                            </label>
+                        }
+                        <p>Project Type</p>
+                        <label>
+                            <input type="checkbox" name="projectType" value="ENS491/492 Project" />
+                            Project
+                        </label>
+                        <label>
+                            <input type="checkbox" name="projectType" value="ENS491/492 Industry Focused Project" />
+                            Industry Focused Project
+                        </label>
+                        <button type="submit">
+                            Filter
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

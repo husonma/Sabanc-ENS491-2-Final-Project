@@ -1,0 +1,22 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+    <div class="login-form">
+        @if (ViewData.ModelState["LoginError"]?.Errors.Count > 0)
+        {
+            <div class="text-danger">
+                @Html.ValidationMessage("LoginError")
+            </div>
+        }
+        <form asp-controller="Account" asp-action="Login" method="post">
+        <label asp-for="EmailAddress" class="control-label">Email:</label><br>
+        <input asp-for="EmailAddress" class="form-control"><br>
+        <label asp-for="Password" class="control-label">Password:</label><br>
+        <input asp-for="Password" class="form-control" type="password"><br>
+        <input type="submit" value="Login" value="Sign In"><br>
+        </form>
+    </div>
+

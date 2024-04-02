@@ -1,0 +1,54 @@
+﻿body {
+}
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+    .card .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .card label {
+        width: 150px;
+        display: block;
+        margin-bottom: 5px;
+        margin-right: 5px;
+    }
+
+    .card input[type="text"],
+    .card textarea {
+        flex: 1;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .card select {
+        flex: 1;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .card input[type="submit"] {
+        width: 100%;
+        padding: 5px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .card .text-danger {
+        color: red;
+        margin-top: 5px;
+    }
