@@ -31,7 +31,8 @@ namespace Sabancı_ENS491_492_Website.Controllers
             {
                 var claims = new List<Claim>{
                     new Claim(ClaimTypes.Name, user.EmailAddress),
-                    new Claim(ClaimTypes.Role, user.Role)
+                    new Claim(ClaimTypes.Role, user.Role),
+                    new Claim("FullName", user.Name)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -46,11 +47,15 @@ namespace Sabancı_ENS491_492_Website.Controllers
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
                 // Check the role and redirect accordingly
-                if (user.Role == "Student")
+                if (user.Role == "student")
                 {
                     return RedirectToAction("ProjectsListView", "Projects");
                 }
-                else if (user.Role == "Instructor")
+                else if (user.Role == "instructor")
+                {
+                    return RedirectToAction("ProjectAddView", "Projects");
+                }
+                else if (user.Role == "admin")
                 {
                     return RedirectToAction("ProjectAddView", "Projects");
                 }

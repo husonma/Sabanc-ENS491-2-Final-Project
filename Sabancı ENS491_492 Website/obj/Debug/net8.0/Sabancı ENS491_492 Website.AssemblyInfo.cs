@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Sabancı ENS491_492 Website")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d63adddc86da13c87f68f633af4604309f8f5ab2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sabancı ENS491_492 Website")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sabancı ENS491_492 Website")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

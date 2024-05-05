@@ -1,7 +1,13 @@
-﻿@model Sabancı_ENS491_492_Website.Models.Project
+﻿@using Sabancı_ENS491_492_Website.Models
+@model ProjectViewModel
+@using Microsoft.AspNetCore.Identity 
+
 
 @{
     ViewData["Title"] = "Manage Projects";
+    var isSupervisor = User.IsInRole("instructor"); 
+    var isAdmin = User.IsInRole("admin"); 
+    var fullNameClaim = User.Claims.FirstOrDefault(c => c.Type == "FullName")?.Value;
 }
 
 <h2>@ViewData["Title"]</h2>
@@ -24,60 +30,78 @@
         @Html.AntiForgeryToken()
 
         <div class="form-group">
-            <label asp-for="Title" class="control-label">Title:</label>
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
+            <label asp-for="NewProject.Title" class="control-label">Title:</label>
+            <input asp-for="NewProject.Title" class="form-control" />
+            <span asp-validation-for="NewProject.Title" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="Description" class="control-label">Description:</label>
-            <textarea asp-for="Description" class="form-control"></textarea>
-            <span asp-validation-for="Description" class="text-danger"></span>
+            <label asp-for="NewProject.Description" class="control-label">Description:</label>
+            <textarea asp-for="NewProject.Description" class="form-control"></textarea>
+            <span asp-validation-for="NewProject.Description" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="MajorDesign" class="control-label">Major Design:</label>
-            <input asp-for="MajorDesign" class="form-control" />
-            <span asp-validation-for="MajorDesign" class="text-danger"></span>
+            <label asp-for="NewProject.MajorDesign" class="control-label">Major Design:</label>
+            <input asp-for="NewProject.MajorDesign" class="form-control" />
+            <span asp-validation-for="NewProject.MajorDesign" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="RecommendedDisciplines" class="control-label">Recommended Disciplines:</label>
-            <input asp-for="RecommendedDisciplines" class="form-control" />
-            <span asp-validation-for="RecommendedDisciplines" class="text-danger"></span>
+            <label asp-for="NewProject.RecommendedDisciplines" class="control-label">Recommended Disciplines:</label>
+            <input asp-for="NewProject.RecommendedDisciplines" class="form-control" />
+            <span asp-validation-for="NewProject.RecommendedDisciplines" class="text-danger"></span>
+        </div>
+        @if (isAdmin)
+        {
+            <div class="form-group">
+                <label asp-for="SelectedSupervisors" class="control-label">Select Supervisors:</label>
+                <select asp-for="SelectedSupervisors" class="form-control">
+                    @foreach (var supervisor in Model.AvailableSupervisors)
+                    {
+                        <option value="@supervisor.UserId">@supervisor.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="SelectedSupervisors" class="text-danger"></span>
+            </div>
+        }
+
+        else if (isSupervisor)
+        {
+            <div class="form-group">
+                <label class="control-label">Supervisor:</label>
+                <input type="text" class="form-control" value="@fullNameClaim" readonly />
+            </div>
+        }
+        <div class="form-group">
+            <label asp-for="NewProject.ProjectType" class="control-label">Project Type:</label>
+            <input asp-for="NewProject.ProjectType" class="form-control" />
+            <span asp-validation-for="NewProject.ProjectType" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="ProjectType" class="control-label">Project Type:</label>
-            <input asp-for="ProjectType" class="form-control" />
-            <span asp-validation-for="ProjectType" class="text-danger"></span>
+            <label asp-for="NewProject.Company" class="control-label">Company:</label>
+            <input asp-for="NewProject.Company" class="form-control" />
+            <span asp-validation-for="NewProject.Company" class="text-danger"></span>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <label asp-for="NewProject.RecommendedNumberOfStudents" class="control-label">Recommended Number Of Students:</label>
+            <input asp-for="NewProject.RecommendedNumberOfStudents" class="form-control" type="number" />
+            <span asp-validation-for="NewProject.RecommendedNumberOfStudents" class="text-danger"></span>
         </div>
 
         <div class="form-group">
-            <label asp-for="Company" class="control-label">Company:</label>
-            <input asp-for="Company" class="form-control" />
-            <span asp-validation-for="Company" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="Supervisors" class="control-label">Supervisors:</label>
-            <input asp-for="Supervisors" class="form-control" />
-            <span asp-validation-for="Supervisors" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="RecommendedNumberOfStudents" class="control-label">Recommended Number Of Students:</label>
-            <input asp-for="RecommendedNumberOfStudents" class="form-control" type="number" style="width: auto;" />
-            <span asp-validation-for="RecommendedNumberOfStudents" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="IsFull" class="control-label">Is Full:</label>
-            <select asp-for="IsFull" class="form-control">
+            <label asp-for="NewProject.IsFull" class="control-label">Is Full:</label>
+            <select asp-for="NewProject.IsFull" class="form-control">
+                <option value="">Select...</option>
                 <option value="false">No</option>
                 <option value="true">Yes</option>
             </select>
-            <span asp-validation-for="IsFull" class="text-danger"></span>
+            <span asp-validation-for="NewProject.IsFull" class="text-danger"></span>
         </div>
 
         <div class="form-group">
@@ -88,31 +112,75 @@
 
 
 <!-- List of existing projects -->
-<table class="table">
+@*<table class="table table-custom">
     <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <!-- ... other headers ... -->
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var project in ViewBag.Projects as IEnumerable<Sabancı_ENS491_492_Website.Models.Project>)
+        @if (isSupervisor)
         {
             <tr>
-                <td>@project.Title</td>
-                <td>@project.Description</td>
-                <!-- ... other project details ... -->
-                <td>
-                    <!-- Delete project link -->
-                    <a asp-action="DeleteProject" asp-route-id="@project.ProjectId" class="text-danger">Delete</a>
-                </td>
+                <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
             </tr>
         }
+        else if (isAdmin)
+        {
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Supervisors</th>
+                <th>Actions</th>
+            </tr>
+        }
+    </thead>
+    <tbody>
+        @if (isSupervisor)
+        {
+            if (Model.Projects.Any())
+            {
+                foreach (var project in Model.Projects)
+                {
+                    <tr>
+                        <td>@project.Title</td>
+                        <td>@project.Description</td>
+                        <td>
+                            <a asp-action="DeleteProject" asp-route-id="@project.ProjectId" class="text-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <p>No projects found.</p>
+            }
+        }
+        else if (isAdmin)
+        {
+            if(Model.Projects.Any()){
+                @foreach (var project in Model.Projects) // Now Model.SupervisedProjects is guaranteed not to be null
+                {
+                    if (project.ProjectSupervisors != null)
+                    {
+                        <tr>
+                            <td>@project.ProjectId</td>
+                        <td>@project.Title</td>
+                        <td>@string.Join(", ", project.ProjectSupervisors.Select(ps => ps.User.Name))</td>
+                        <td>
+                            <!-- Delete project link -->
+                            <a asp-action="DeleteProject" asp-route-id="@project.ProjectId" class="text-danger">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                }
+            }
+            else
+            {
+                <p>No projects found.</p>
+            }
+        }
     </tbody>
-</table>
+</table>*@
 <form asp-controller="Projects" asp-action="ProjectsListView" method="get">
     <button type="submit" class="btn btn-secondary">Back to Projects List</button>
 </form>
 
+                         
