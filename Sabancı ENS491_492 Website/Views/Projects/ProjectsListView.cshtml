@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Project>
+﻿@model Sabancı_ENS491_492_Website.Models.ProjectViewModel
+
 @{
     var disciplines = new List<string>
     {
@@ -17,16 +18,19 @@
             <div class="sticky-top" style="top: 20px;">
                 <!-- Content of your sticky sidebar -->
                 <div class="card">
-                    <img class="card-img-top" src="https://suis.sabanciuniv.edu/photos/000028154125733787.jpg" alt="Card image cap">
+                    <img class="card-img-top" src=@Model.CurrentUser.ImgFilePath alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Hüseyin Onur Onma</h5>
+                        <h5 class="card-title">@Model.CurrentUser.Name</h5>
                         <p class="card-text">
-                            <strong>ID:</strong> 00028154<br>
-                            <strong>T.C.-Foreign ID:</strong> XXXXXXXXXXX <br>
-                            <strong>Program:</strong> CS<br>
-                            <strong>Supervisor:</strong> Kamer Kaya<br>
-                            <strong>Mail:</strong> onma@sabanciuniv.edu<br>
-                            <strong>Academic Transcript:</strong> Choose File<br>
+                            <strong>ID:</strong> @Model.CurrentUser.SchoolID<br>
+                            <strong>Program:</strong> @Model.CurrentUser.Program<br>
+                            <strong>Mail:</strong> @Model.CurrentUser.EmailAddress<br>
+                            <div class="form-group">
+                                <label for="fileUpload">Upload Academic Transcript (PDF only):</label>
+                                <input type="file" class="form-control" id="fileUpload" name="UploadedFile" accept=".pdf">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -39,7 +43,7 @@
             <div>
                 @if (Model != null)
                 {
-                    @foreach (var project in Model)
+                    @foreach (var project in Model.Projects)
                     {
                         <div class="project-card">
                             <div class="project-card-head">
@@ -50,7 +54,7 @@
                             <p><strong>Recommended Disciplines: </strong> @project.RecommendedDisciplines</p>
                             <p><strong>Project Type: </strong> @project.ProjectType</p>
                             <p><strong>Company: </strong> @project.Company</p>
-                            <p><strong>Supervisors: </strong> @project.Supervisors</p>
+                            <p><strong>Supervisors: </strong> @string.Join(", ", project.ProjectSupervisors.Select(ps => ps.User.Name))</p>
                             <p><strong>Recommended Number Of Students: </strong>@project.RecommendedNumberOfStudents</p>
                             @if(project.IsFull){
                                 <h><strong>Project is full!</strong></h>

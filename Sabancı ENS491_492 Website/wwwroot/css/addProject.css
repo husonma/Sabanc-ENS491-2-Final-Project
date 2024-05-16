@@ -52,3 +52,18 @@
         color: red;
         margin-top: 5px;
     }
+.table-custom {
+    margin-top: 1rem; 
+}
+.table-custom thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #007bff;
+}
+
+.table-custom tbody tr {
+    background-color: white;
+}
+
+    .table-custom tbody tr td {
+        border-bottom: 1px solid #007bff;
+    }

@@ -2729,19 +2729,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\husey\\.nuget\\packages\\": {}
+    "C:\\Users\\pc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\husey\\source\\repos\\Sabancı ENS491_492 Website\\Sabancı ENS491_492 Website\\Sabancı ENS491_492 Website.csproj",
+      "projectUniqueName": "C:\\Users\\pc\\Source\\Repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\Sabancı ENS491_492 Website.csproj",
       "projectName": "Sabancı ENS491_492 Website",
-      "projectPath": "C:\\Users\\husey\\source\\repos\\Sabancı ENS491_492 Website\\Sabancı ENS491_492 Website\\Sabancı ENS491_492 Website.csproj",
-      "packagesPath": "C:\\Users\\husey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\husey\\source\\repos\\Sabancı ENS491_492 Website\\Sabancı ENS491_492 Website\\obj\\",
+      "projectPath": "C:\\Users\\pc\\Source\\Repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\Sabancı ENS491_492 Website.csproj",
+      "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pc\\Source\\Repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\husey\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

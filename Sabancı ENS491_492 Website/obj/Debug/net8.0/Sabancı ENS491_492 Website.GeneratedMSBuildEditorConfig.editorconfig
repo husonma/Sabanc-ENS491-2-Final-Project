@@ -9,47 +9,47 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Sabancı_ENS491_492_Website
 build_property.RootNamespace = Sabancı_ENS491_492_Website
-build_property.ProjectDir = C:\Users\husey\source\repos\Sabancı ENS491_492 Website\Sabancı ENS491_492 Website\
+build_property.ProjectDir = C:\Users\pc\source\repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Website\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\husey\source\repos\Sabancı ENS491_492 Website\Sabancı ENS491_492 Website
+build_property.MSBuildProjectDirectory = C:\Users\pc\source\repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Website
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/husey/source/repos/Sabancı ENS491_492 Website/Sabancı ENS491_492 Website/Views/Home/Index.cshtml]
+[C:/Users/pc/source/repos/Sabanc-ENS491-2-Final-Project/Sabancı ENS491_492 Website/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/husey/source/repos/Sabancı ENS491_492 Website/Sabancı ENS491_492 Website/Views/Home/Privacy.cshtml]
+[C:/Users/pc/source/repos/Sabanc-ENS491-2-Final-Project/Sabancı ENS491_492 Website/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/husey/source/repos/Sabancı ENS491_492 Website/Sabancı ENS491_492 Website/Views/Projects/ProjectAddView.cshtml]
+[C:/Users/pc/source/repos/Sabanc-ENS491-2-Final-Project/Sabancı ENS491_492 Website/Views/Projects/ProjectAddView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUHJvamVjdEFkZFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/husey/source/repos/Sabancı ENS491_492 Website/Sabancı ENS491_492 Website/Views/Projects/ProjectsListView.cshtml]
+[C:/Users/pc/source/repos/Sabanc-ENS491-2-Final-Project/Sabancı ENS491_492 Website/Views/Projects/ProjectsListView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcUHJvamVjdHNMaXN0Vmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/husey/source/repos/Sabancı ENS491_492 Website/Sabancı ENS491_492 Website/Views/Shared/Error.cshtml]
+[C:/Users/pc/source/repos/Sabanc-ENS491-2-Final-Project/Sabancı ENS491_492 Website/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/husey/source/repos/Sabancı ENS491_492 Website/Sabancı ENS491_492 Website/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/pc/source/repos/Sabanc-ENS491-2-Final-Project/Sabancı ENS491_492 Website/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/husey/source/repos/Sabancı ENS491_492 Website/Sabancı ENS491_492 Website/Views/_ViewImports.cshtml]
+[C:/Users/pc/source/repos/Sabanc-ENS491-2-Final-Project/Sabancı ENS491_492 Website/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/husey/source/repos/Sabancı ENS491_492 Website/Sabancı ENS491_492 Website/Views/_ViewStart.cshtml]
+[C:/Users/pc/source/repos/Sabanc-ENS491-2-Final-Project/Sabancı ENS491_492 Website/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/husey/source/repos/Sabancı ENS491_492 Website/Sabancı ENS491_492 Website/Views/Shared/_Layout.cshtml]
+[C:/Users/pc/source/repos/Sabanc-ENS491-2-Final-Project/Sabancı ENS491_492 Website/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-9lmug0it0n
