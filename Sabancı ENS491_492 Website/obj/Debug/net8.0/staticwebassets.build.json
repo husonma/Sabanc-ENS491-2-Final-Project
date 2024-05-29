@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EbtyGJFOvqXxHK5qRh6FDAzc7BzF16WmE5VIT8I8gtg=",
+  "Hash": "YFUGdUKa8EqHGSTn3gy17MraGtV85hu4xSNkilnT9AM=",
   "Source": "Sabancı ENS491_492 Website",
   "BasePath": "_content/Sabancı ENS491_492 Website",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\addProject.css"
+    },
+    {
+      "Identity": "C:\\Users\\pc\\source\\repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\wwwroot\\css\\chat.css",
+      "SourceId": "Sabancı ENS491_492 Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pc\\source\\repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\wwwroot\\",
+      "BasePath": "_content/Sabancı ENS491_492 Website",
+      "RelativePath": "css/chat.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\chat.css"
     },
     {
       "Identity": "C:\\Users\\pc\\source\\repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\wwwroot\\css\\login.css",
@@ -1269,6 +1288,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\pc\\source\\repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\wwwroot\\uploads\\transcript.pdf",
+      "SourceId": "Sabancı ENS491_492 Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pc\\source\\repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\wwwroot\\",
+      "BasePath": "_content/Sabancı ENS491_492 Website",
+      "RelativePath": "uploads/transcript.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\transcript.pdf"
     }
   ]
 }

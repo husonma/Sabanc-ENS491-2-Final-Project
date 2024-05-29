@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sabancı_ENS491_492_Website.Models;
 using System.Collections.Generic;
+using static Sabancı_ENS491_492_Website.Models.ChatMessage;
 
 namespace Sabancı_ENS491_492_Website.Data
 {
@@ -18,6 +19,7 @@ namespace Sabancı_ENS491_492_Website.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<ProjectSupervisor> ProjectSupervisors { get; set; }
+        public DbSet<Models.ChatMessage> ChatMessages { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

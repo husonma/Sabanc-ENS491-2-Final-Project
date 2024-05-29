@@ -1,0 +1,155 @@
+﻿@using System.IO
+@model Sabancı_ENS491_492_Website.Models.ProjectViewModel
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="~/css/chat.css">
+</head>
+<body>
+    <div id="chatContainer" class="chat-container">
+        <div class="chat-sidebar">
+            @if (User.IsInRole("admin") || User.IsInRole("instructor"))
+            {
+                @foreach (var user in Model.Users)
+                {
+                    @if (user.Role == "student")
+                    {
+                        <div class="chat-sidebar-sender" onclick="selectUser('@user.UserId', '@user.Name')">
+                            @user.Name - @user.SchoolID
+                        </div>
+                    }
+                }
+            }
+            @if (User.IsInRole("student"))
+            {
+                @foreach (var user in Model.Users)
+                {
+                    @if (user.Role == "instructor" || user.Role == "admin")
+                    {
+                        <div class="chat-sidebar-sender" onclick="selectUser('@user.UserId', '@user.Name')">
+                            @user.Name
+                        </div>
+                    }
+                }
+            }
+        </div>
+        <div class="chat-main">
+            <ul id="messagesList" class="messages-list">
+                <!-- Messages will be loaded here dynamically -->
+            </ul>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Write your message here" />
+                <button type="button" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.18/signalr.min.js"></script>
+    <script>
+        var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+        var selectedUserId = '';
+        var selectedUserName = '';
+        var localMessages = [];
+
+        connection.on("ReceiveMessage", function (username, message, timestamp) {
+            console.log('ReceiveMessage:', { username, message, timestamp });
+            appendMessage(username, message, timestamp);
+        });
+
+        connection.start().then(function () {
+            console.log('SignalR Connected');
+        }).catch(function (err) {
+            console.error('SignalR Connection Error:', err.toString());
+        });
+
+        function selectUser(userId, userName) {
+            console.log('Selected user:', { userId, userName });
+            selectedUserId = userId;
+            selectedUserName = userName;
+            document.getElementById('messagesList').innerHTML = ''; // Clear previous messages
+            localMessages = []; // Reset local messages array
+            loadMessages(userId); // Load messages for the selected user
+        }
+
+        function sendMessage() {
+            var message = document.getElementById("messageInput").value;
+            console.log('SendMessage:', { selectedUserId, message });
+            if (selectedUserId && message) {
+                connection.invoke("SendMessage", "@Model.CurrentUser.UserId", selectedUserId, message)
+                    .then(function () {
+                        console.log('Message sent:', message);
+                        var timestamp = new Date().toLocaleString();
+                        appendMessage('You', message, timestamp);
+                        document.getElementById("messageInput").value = '';
+                    })
+                    .catch(function (err) {
+                        console.error('Error sending message via SignalR:', err.toString());
+                        // Fallback to HTTP controller if SignalR fails
+                        fetch('/Projects/SendMessage', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                senderId: '@Model.CurrentUser.UserId',
+                                receiverId: selectedUserId,
+                                message: message
+                            })
+                        }).then(response => response.json())
+                            .then(result => {
+                                if (result.success) {
+                                    console.log('Message sent via HTTP controller:', message);
+                                    var timestamp = new Date().toLocaleString();
+                                    appendMessage('You', message, timestamp);
+                                    document.getElementById("messageInput").value = '';
+                                } else {
+                                    console.error('Error sending message via HTTP controller:', result.error);
+                                }
+                            }).catch(error => {
+                                console.error('HTTP Error:', error.toString());
+                            });
+                    });
+            } else {
+                alert('Please select a user and enter a message.');
+            }
+        }
+
+        function loadMessages(userId) {
+            console.log('LoadMessages for user:', userId);
+            fetch(`/Projects/GetMessages?userId=${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Messages loaded:', data);
+                    data.forEach(message => {
+                        appendMessage(message.senderName, message.text, new Date(message.timestamp).toLocaleString());
+                    });
+                })
+                .catch(error => console.error('Error loading messages:', error));
+        }
+
+        function appendMessage(username, message, timestamp) {
+            // Prevent duplicate messages by checking if they already exist in localMessages
+            var messageId = username + message + timestamp;
+            if (!localMessages.includes(messageId)) {
+                localMessages.push(messageId);
+                var li = document.createElement("li");
+                li.className = "message";
+                li.innerHTML = `
+                    <div class="message-header">
+                        <span class="sender">${username}</span>
+                        <span class="timestamp">${timestamp}</span>
+                    </div>
+                    <div class="message-body">
+                        <span class="text">${message}</span>
+                    </div>`;
+                document.getElementById("messagesList").appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>

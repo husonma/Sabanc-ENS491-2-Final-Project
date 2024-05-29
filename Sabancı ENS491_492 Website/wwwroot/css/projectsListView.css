@@ -17,6 +17,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 1rem;
+
 }
 
 .card-title {
@@ -107,5 +108,4 @@
         /* Style for checkboxes */
         margin-right: 5px; /* Space between checkbox and label text */
     }
-
 

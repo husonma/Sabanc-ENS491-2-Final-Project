@@ -4,7 +4,7 @@
 @using System.Security.Claims;
 
 @{
-    ViewData["Title"] = "Manage Projects";
+    ViewData["Title"] = "Project Add";
     var isSupervisor = User.IsInRole("instructor"); 
     var isAdmin = User.IsInRole("admin"); 
     var fullNameClaim = User.Claims.FirstOrDefault(c => c.Type == "FullName")?.Value;
@@ -52,6 +52,11 @@
             <label asp-for="NewProject.RecommendedDisciplines" class="control-label">Recommended Disciplines:</label>
             <input asp-for="NewProject.RecommendedDisciplines" class="form-control" />
             <span asp-validation-for="NewProject.RecommendedDisciplines" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewProject.relatedCourse" class="control-label">Related Course:</label>
+            <input asp-for="NewProject.relatedCourse" class="form-control" />
+            <span asp-validation-for="NewProject.relatedCourse" class="text-danger"></span>
         </div>
        @if (isAdmin)
         {
@@ -112,76 +117,5 @@
 </div>
 
 
-<!-- List of existing projects -->
-<table class="table table-custom">
-    <thead>
-        @if (isSupervisor)
-        {
-            <tr>
-                <th>Title</th>
-            <th>Description</th>
-            <th>Actions</th>
-            </tr>
-        }
-        else if (isAdmin)
-        {
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Supervisors</th>
-                <th>Actions</th>
-            </tr>
-        }
-    </thead>
-    <tbody>
-        @if (isSupervisor)
-        {
-            if (Model.Projects.Any())
-            {
-                @foreach (var project in Model.Projects.Where(p => p.ProjectSupervisors.Any(ps => ps.UserId.ToString() == loggedInUserId)))
-                {
-                    <tr>
-                        <td>@project.Title</td>
-                        <td>@project.Description</td>
-                        <td>
-                            <a asp-action="DeleteProject" asp-route-id="@project.ProjectId" class="text-danger">Delete</a>
-                        </td>
-                    </tr>
-                }
-            }
-            else
-            {
-                <p>No projects found.</p>
-            }
-        }
-        else if (isAdmin)
-        {
-            if(Model.Projects.Any()){
-                @foreach (var project in Model.Projects) // Now Model.SupervisedProjects is guaranteed not to be null
-                {
-                    if (project.ProjectSupervisors != null)
-                    {
-                        <tr>
-                            <td>@project.ProjectId</td>
-                        <td>@project.Title</td>
-                        <td>@string.Join(", ", project.ProjectSupervisors.Select(ps => ps.User.Name))</td>
-                        <td>
-                            <!-- Delete project link -->
-                            <a asp-action="DeleteProject" asp-route-id="@project.ProjectId" class="text-danger">Delete</a>
-                        </td>
-                    </tr>
-                    }
-                }
-            }
-            else
-            {
-                <p>No projects found.</p>
-            }
-        }
-    </tbody>
-</table>
-<form asp-controller="Projects" asp-action="ProjectsListView" method="get">
-    <button type="submit" class="btn btn-secondary">Back to Projects List</button>
-</form>
 
                          

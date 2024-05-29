@@ -9,8 +9,9 @@
         public string Role { get; set; }
         public int? SchoolID { get; set; }          // Nullable integer for SchoolID
         public string Program { get; set; }         // Nullable string for Program
-        public string PDFFilePath { get; set; }     // Nullable string for PDF file path
+        public string? PDFFilePath { get; set; }    // Nullable string for PDF file path
         public string ImgFilePath { get; set; }     // Nullable string for Img file path
         public ICollection<ProjectSupervisor> ProjectSupervisors { get; set; }
+        public string PDFFileName => Path.GetFileName(PDFFilePath);
     }
 }

@@ -12,7 +12,8 @@ namespace Sabancı_ENS491_492_Website.Models
         public IEnumerable<int> SelectedSupervisors { get; set; }
         public IEnumerable<Project> SupervisedProjects { get; set; }
         public IFormFile UploadedFile { get; set; }
-
-
+        public List<User> Users { get; set; }
+        public List<ChatMessage> RecentMessages { get; set; }
+        public string relatedCourse { get; set; }
     }
 }

@@ -1,4 +1,7 @@
-﻿@model Sabancı_ENS491_492_Website.Models.ProjectViewModel
+﻿@using System.IO
+@model Sabancı_ENS491_492_Website.Models.ProjectViewModel
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
 
 @{
     var disciplines = new List<string>
@@ -24,13 +27,29 @@
                         <p class="card-text">
                             <strong>ID:</strong> @Model.CurrentUser.SchoolID<br>
                             <strong>Program:</strong> @Model.CurrentUser.Program<br>
-                            <strong>Mail:</strong> @Model.CurrentUser.EmailAddress<br>
-                            <div class="form-group">
-                                <label for="fileUpload">Upload Academic Transcript (PDF only):</label>
-                                <input type="file" class="form-control" id="fileUpload" name="UploadedFile" accept=".pdf">
-                            </div>
+                            <form asp-action="UploadTranscript" asp-controller="Projects" method="post" enctype="multipart/form-data">
+                                <div class="form-group" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                                    <h5 for="fileUpload" style="margin-bottom: 0;">Upload Academic Transcript (PDF only):</h5>
+                                        <input type="file" class="form-control" id="fileUpload" name="file" accept=".pdf">
+                                        <div id="fileNameDisplay" class="form-control ">
+                                            @if (!string.IsNullOrEmpty(Model.CurrentUser.PDFFilePath))
+                                            {
+                                                <a href="@Url.Content("~/uploads/" + Model.CurrentUser.PDFFileName)" target="_blank">
+                                                    @Model.CurrentUser.PDFFileName
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <span>No file uploaded.</span>
+                                            }
+                                        </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                            <form asp-action="AnalyzeTranscript" asp-controller="Projects" style="display: flex; justify-content: center" method="post">
+                                <button type="submit" class="btn btn-secondary">Advanced Filter</button>
+                            </form>
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
                         </p>
                     </div>
                 </div>
@@ -45,12 +64,13 @@
                 {
                     @foreach (var project in Model.Projects)
                     {
-                        <div class="project-card">
+                        <div class="project-card" id="project-@project.ProjectId">
                             <div class="project-card-head">
                                 <a>#@project.ProjectId</a>
                                 <a>@project.Title</a>
                             </div>
                             <p><strong>Description: </strong>@project.Description</p>
+                            <p><strong>Major Design: </strong>@project.MajorDesign</p>
                             <p><strong>Recommended Disciplines: </strong> @project.RecommendedDisciplines</p>
                             <p><strong>Project Type: </strong> @project.ProjectType</p>
                             <p><strong>Company: </strong> @project.Company</p>
@@ -103,4 +123,34 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            var scrollTo = urlParams.get('scrollTo');
+            if (scrollTo) {
+                var scrollToElement = $('#project-' + scrollTo);
+                if (scrollToElement.length) {
+                    $('html, body').animate({
+                        scrollTop: scrollToElement.offset().top - 100 // Adjusted for better view
+                    }, 1000);
+                }
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('fileUpload').addEventListener('change', function (event) {
+            var fileInput = event.target;
+            var fileNameDisplay = document.getElementById('fileNameDisplay');
+
+            if (fileInput.files.length > 0) {
+                var fileName = fileInput.files[0].name;
+                fileNameDisplay.innerHTML = fileName; // Update the display
+            } else {
+                fileNameDisplay.innerHTML = 'No file selected.'; // Default text
+            }
+        });
+    </script>
+}
 

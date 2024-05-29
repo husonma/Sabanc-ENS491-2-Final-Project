@@ -140,3 +140,7 @@ C:\Users\pc\Source\Repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Websi
 C:\Users\pc\Source\Repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Website\obj\Debug\net8.0\Sabancı ENS491_492 Website.pdb
 C:\Users\pc\Source\Repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Website\obj\Debug\net8.0\Sabancı ENS491_492 Website.genruntimeconfig.cache
 C:\Users\pc\Source\Repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Website\obj\Debug\net8.0\ref\Sabancı ENS491_492 Website.dll
+C:\Users\pc\source\repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Website\bin\Debug\net8.0\BouncyCastle.Crypto.dll
+C:\Users\pc\source\repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Website\bin\Debug\net8.0\itextsharp.dll
+C:\Users\pc\source\repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Website\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\pc\source\repos\Sabanc-ENS491-2-Final-Project\Sabancı ENS491_492 Website\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

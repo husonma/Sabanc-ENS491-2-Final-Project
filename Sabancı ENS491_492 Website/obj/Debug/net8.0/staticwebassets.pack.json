@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\addProject.css"
     },
     {
+      "Id": "C:\\Users\\pc\\source\\repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\wwwroot\\css\\chat.css",
+      "PackagePath": "staticwebassets\\css\\chat.css"
+    },
+    {
       "Id": "C:\\Users\\pc\\source\\repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },
@@ -259,6 +263,10 @@
     {
       "Id": "C:\\Users\\pc\\source\\repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\pc\\source\\repos\\Sabanc-ENS491-2-Final-Project\\Sabancı ENS491_492 Website\\wwwroot\\uploads\\transcript.pdf",
+      "PackagePath": "staticwebassets\\uploads\\transcript.pdf"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Sabancı ENS491_492 Website.Microsoft.AspNetCore.StaticWebAssets.props",
